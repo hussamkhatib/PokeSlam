@@ -1,21 +1,17 @@
 export const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 
-export const getPokemons = async function () {
-  const pokemon = [];
-  for (let i = 0; i < 5; i++) {
-    pokemon.push(fetch(`https://pokeapi.co/api/v2/pokemon/${random(1, 800)}`));
-  }
-  return Promise.all(pokemon)
-    .then((data) => {
-      const parsedData = [];
-      data.forEach(async (d) => {
-        const resJson = await d.json()
-        parsedData.push(resJson);
-      });
-       return parsedData
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+/*export const getPokemons = () => (
+    Promise.all(
+      Array.from({ length: 5 }, async () => {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${random(1, 800)}`);
+        return response.json();
+      })
+    )
+  );*/
+  export function getPokemons() {
+    return Promise.all(
+      Array.from({ length: 5 }, () => fetch(`https://pokeapi.co/api/v2/pokemon/${random(1, 800)}`)
+      .then(r => r.json()))
+    )
+ }
