@@ -2,47 +2,45 @@ import React, { useState,useEffect} from 'react'
 import { getPokemons } from '../helper'
 import styled from 'styled-components'
 
-const Main = () => {
+const Main = ({ totalCards }) => {
    
-    const Wrapper = styled.div`
-    display:grid;
-    grid-template-columns: repeat(10,1fr);
-    grid-auto-flow: column;`
-    const Name = styled.h2`
-    grid-column: 1/-1;
-    margin:0;
-    padding:0;
-    font-size:1em;
-    `
-    const CardContainer =styled.div`
-    display:grid;
-    grid-template: 100px repeat(4,1fr) / 1fr 1fr;
-    border: 2px solid #e6e6e6;
-    justify-items:center;`
-
-    const Image = styled.img`
-    grid-area: 1/1/ 2/-1;
-    `
-
-    const Stats = styled.p`
-    margin:0;
-    font-size:0.8em;
-    padding:0;
+  const Wrapper = styled.div`
+  display:grid;
+  grid-template-columns: repeat(10,1fr);
+  grid-auto-flow: column;`
+  const Name = styled.h2`
+  grid-column: 1/-1;
+  margin:0;
+  padding:0;
+  font-size:1em;
   `
-  
-   // const [totalCards,useTotalCards] = useState(0);
-   // const [items,setItems]= useState([])
+  const CardContainer =styled.div`
+  display:grid;
+  grid-template: 100px repeat(4,1fr) / 1fr 1fr;
+  border: 2px solid #e6e6e6;
+  justify-items:center;`
+
+  const Image = styled.img`
+  grid-area: 1/1/ 2/-1;
+  `
+
+  const Stats = styled.p`
+  margin:0;
+  font-size:0.8em;
+  padding:0;
+`
     const [stats,setStats] = useState([])
+
     useEffect(() => {
         const setPokemons = async () => {
-          setStats(await getPokemons());
+          setStats(await getPokemons(totalCards));
         };
         setPokemons();  
-      }, []);
+      }, [totalCards]);
     
     return (
         <Wrapper>
-        {stats.map(item =>  (
+        {stats && stats.map(item =>  (
           <CardContainer key={item.id}>
             <Image src={item.sprites.front_default} alt='pokemon'/>
           <Name>
