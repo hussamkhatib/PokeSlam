@@ -4,14 +4,15 @@ import styled from 'styled-components'
 const Rule = ({ startGame,prop }) => {
     const Wrapper = styled.div``
     const Button = styled.button``
-    
+    const Input = styled.input``
+    const Form = styled.form``    
     return (
         <Wrapper>
-            <form ref={prop} onSubmit={startGame}>
-                <input type="radio" value="3" name="totalCards" /> 3
-                <input type="radio" value="5" name="totalCards" /> 5
+            <Form ref={prop} onSubmit={startGame}>
+                <Input type="radio" value="3" name="totalCards" checked /> 3
+                <Input type="radio" value="5" name="totalCards" /> 5
             <Button>Start Game</Button>
-            </form>
+            </Form>
         </Wrapper>
     )
 }

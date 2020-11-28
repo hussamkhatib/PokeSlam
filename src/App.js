@@ -27,7 +27,6 @@ function App() {
        <Header /> 
       {!startGame && <Rule startGame={start} prop={form} />}
       {startGame && <Main totalCards={totalCards}/> }
-      {startGame && <Main totalCards={totalCards}/> }
        <Footer />
     </div>
   );
