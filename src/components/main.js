@@ -11,27 +11,22 @@ const Main = () => {
    // const [totalCards,useTotalCards] = useState(0);
    // const [items,setItems]= useState([])
     const [stats,setStats] = useState([])
-   /**    <Name>{item[0]}</Name>
-            <Stats>HP {item[1]}</Stats>
-            <Stats>Attack {item[1]}</Stats>
-
-            <Stats>Defence {item[2]}</Stats>
-            <Stats>Special-Attack {item[3]}</Stats>
-            <Stats>Special-Defense {item[4]}</Stats>
-            <Stats>Speed {item[5]}</Stats> */
-
-  
      useEffect(()=>{
-          setStats(getPokemons())  
-    },[])
-    console.log(getPokemons())
+      generateTrio()  
+        },[])
+        
+    async function generateTrio() {
+        const gTrio = await getPokemons();
+        setStats(gTrio)
+        }
+
     return (
         <Wrapper>
-            {stats.map(item => (
-                <p>render{item.name}</p>
-            ))}            
+             { stats.map((item,index) => ( 
+                 <p key={index}>render{item.name}</p> 
+             ))}
+             <p>a{stats}</p>
         </Wrapper>
         )
 }
-
 export default Main
