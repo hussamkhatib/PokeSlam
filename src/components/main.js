@@ -11,12 +11,29 @@ const Main = ({ totalCards }) => {
   align-items:center;
   height: 65vh;`
     const [isLoaded, setIsLoaded] = useState(false);
-    const [myStats,setMyStats] = useState([])
+    const [myStats, setMyStats] = useState([])
     const [cpuStats,setCpuStats] = useState([])
-    const [revealCard,setRevealCard] = useState(false)
+    const [revealCard,setRevealCard] = useState(true)
     const myActiveCard = myStats.slice(0,1)
     const cpuActiveCard = cpuStats.slice(0,1)
 
+    const buttons = ['hp','attack','defence','special-attack','special-defence','speed']
+
+    const handleClick = (e) => {
+      setRevealCard(true)
+      let index = buttons.indexOf(e.target.innerText)
+      if(statsOf(myStats) > statsOf(cpuStats)){
+        setCpuStats([...cpuStats].slice(1))
+        setMyStats([...myStats,cpuStats[0],myStats[0]].slice(1))
+      }else{
+        setMyStats([...myStats].slice(1))
+        setCpuStats([...cpuStats,myStats[0],cpuStats[0]].slice(1))
+      }
+      function statsOf(el){
+        return el[0].stats[index].base_stat
+      }
+    }
+    
     useEffect(() => {
         const setPokemons = async () => {
           setMyStats(await getPokemons(totalCards));
@@ -28,14 +45,15 @@ const Main = ({ totalCards }) => {
       if (!isLoaded) {
         return <div>Loading...</div>
       }
+      console.log({cpuStats,myStats})
     return (
       <>
     <Wrapper>  
       <Card PokeStats={myActiveCard} GridColumn='150px 150px'/>
+      <Options handleClick={handleClick} Buttons={buttons}/>
       <Card PokeStats={cpuActiveCard} GridColumn='150px 150px' Type={revealCard}/>
     </Wrapper>
       <Card PokeStats={myStats} Absolute='true' GridColumn='110px 110px'/>
-  <Options />
   </>
         )
 }

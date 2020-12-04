@@ -1,16 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Options = () => {
+const Options = ({ handleClick,Buttons }) => {
     const Wrapper = styled.div`
-    position:absolute;
-    bottom:0;`
-    const buttons = ['hp','attack','defence','special-attack','special-defence','speed']
+    display:grid;`
+
     return (
         <Wrapper>
-            {buttons.map(btn => 
+            {Buttons.map(btn => 
                 (
-                <button>{btn}</button>
+                <button onClick={handleClick}>{btn}</button>
                 )
                 )}
         </Wrapper>

@@ -16,17 +16,18 @@ grid-column: 1/-1;
 margin:0;
 padding:0.2em;
 font-size:1.6em;
+justify-items:center;
 margin-bottom:0.2em;
 `
 const CardContainer =styled.div`
 display:grid;
-justify-items:center;
 grid-template: 100px 1.5fr repeat(3,1fr) / ${GridColumn};
 border: 2px solid #e6e6e6;
 background: #924d8b;
 height: 35vh;
 transition: all .2s ease-in-out;
 width:max-content;
+justify-items: center;
 &:hover { transform: scale(1.1);`
 const Wrapper = Absolute ? 
 styled.div`position:absolute;
@@ -51,7 +52,6 @@ if(Type === false){
 return (
         
         <Wrapper> 
-           
             {PokeStats && PokeStats.map(item =>  (
             <CardContainer key={item.id}>
             <Image src={item.sprites.front_default} alt='pokemon'/>
