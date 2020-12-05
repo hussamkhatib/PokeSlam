@@ -1,15 +1,35 @@
 import { getPokemons } from '../helper'
 import React, { useState,useEffect} from 'react'
-import styled from 'styled-components'
+import styled, { keyframes }  from 'styled-components'
 import Card from './card'
 import Options from './options'
-const Main = ({ totalCards,endGame,Prop }) => {
+const Main = ({ totalCards,endGame }) => {
    
     const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items:center;
-  height: 65vh;`
+      display: flex;
+      justify-content: space-evenly;
+      align-items:center;
+      height: 65vh;`
+      const rotate = keyframes`
+      from {
+        transform: rotate(0deg);
+      }
+    
+      to {
+        transform: rotate(360deg);
+      }
+    `;
+      const Rotate = styled.div`
+      display: inline-block;
+      animation: ${rotate} 2s linear infinite;
+      display:flex;
+      height:100vh;
+      justify-content:center;
+      align-items:center;
+      padding: 2rem 1rem;
+      font-size: 2rem;
+      color:#924d8b;
+    `;
     const [isLoaded, setIsLoaded] = useState(false);
     const [myStats, setMyStats] = useState([])
     const [cpuStats,setCpuStats] = useState([])
@@ -57,7 +77,7 @@ const Main = ({ totalCards,endGame,Prop }) => {
         setPokemons();  
       }, [totalCards]);
       if (!isLoaded) {
-        return <div>Loading...</div>
+        return  <Rotate> ϞϞ(๑⚈ ․̫ ⚈๑)∩ </Rotate>
       }
     return (
       <>
