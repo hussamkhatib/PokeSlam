@@ -9,7 +9,7 @@ function App() {
 
   const [startGame ,setStartGame] = useState(false)
   const [totalCards,setTotalCards] = useState(0)
-
+  const [winOrLose,setWinOrLose] = useState(undefined)
   const form = useRef(null)
   const start = (e) => {
     e.preventDefault()
@@ -21,15 +21,17 @@ function App() {
     setStartGame(true)
     setTotalCards(output)
   }
-  const endGame = () => {
+  const endGame = (param) => {
     setStartGame('end')
+    setWinOrLose(param)
   }
+
   return (
     <div className="App">
        <Header /> 
       {!startGame && <Rule startGame={start} prop={form} />}
-      {startGame && <Main totalCards={totalCards} endGame={endGame}/> }
-      {startGame === 'end' && <p>you lose to win</p>}
+      {(startGame && startGame !== 'end') && <Main totalCards={totalCards} endGame={endGame}/>  }
+      {startGame === 'end' && <p>you {winOrLose}</p>}
        <Footer />
     </div>
   );

@@ -3,7 +3,7 @@ import React, { useState,useEffect} from 'react'
 import styled from 'styled-components'
 import Card from './card'
 import Options from './options'
-const Main = ({ totalCards,endGame }) => {
+const Main = ({ totalCards,endGame,Prop }) => {
    
     const Wrapper = styled.div`
   display: flex;
@@ -42,8 +42,10 @@ const Main = ({ totalCards,endGame }) => {
     }
     const next = () => {
       setStatus(false)
-      if(myStats.length || cpuStats.length === 0 ){
-         endGame 
+      if(cpuStats.length === 0 ){
+        endGame('win')
+      } else if (myStats.length === 0){
+        endGame('lose')
       }
     }
      useEffect(() => {
