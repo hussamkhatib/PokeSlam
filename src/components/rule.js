@@ -14,6 +14,7 @@ const Rule = ({ startGame,prop }) => {
             <Button>Start Game</Button>
             </Form>
         </Wrapper>
+
     )
 }
 

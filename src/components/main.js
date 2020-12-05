@@ -3,7 +3,7 @@ import React, { useState,useEffect} from 'react'
 import styled from 'styled-components'
 import Card from './card'
 import Options from './options'
-const Main = ({ totalCards }) => {
+const Main = ({ totalCards,endGame }) => {
    
     const Wrapper = styled.div`
   display: flex;
@@ -42,6 +42,9 @@ const Main = ({ totalCards }) => {
     }
     const next = () => {
       setStatus(false)
+      if(myStats.length || cpuStats.length === 0 ){
+         endGame 
+      }
     }
      useEffect(() => {
         const setPokemons = async () => {

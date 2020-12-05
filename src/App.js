@@ -21,12 +21,15 @@ function App() {
     setStartGame(true)
     setTotalCards(output)
   }
-
+  const endGame = () => {
+    setStartGame('end')
+  }
   return (
     <div className="App">
        <Header /> 
       {!startGame && <Rule startGame={start} prop={form} />}
-      {startGame && <Main totalCards={totalCards}/> }
+      {startGame && <Main totalCards={totalCards} endGame={endGame}/> }
+      {startGame === 'end' && <p>you lose to win</p>}
        <Footer />
     </div>
   );
