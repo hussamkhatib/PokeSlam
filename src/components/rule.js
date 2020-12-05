@@ -9,7 +9,7 @@ const Rule = ({ startGame,prop }) => {
     return (
         <Wrapper>
             <Form ref={prop} onSubmit={startGame}>
-                <Input type="radio" value="3" name="totalCards" checked /> 3
+                <Input type="radio" value="3" name="totalCards" checked/> 3
                 <Input type="radio" value="5" name="totalCards" /> 5
             <Button>Start Game</Button>
             </Form>

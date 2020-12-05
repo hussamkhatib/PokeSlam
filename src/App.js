@@ -12,7 +12,7 @@ function App() {
 
   const form = useRef(null)
   const start = (e) => {
-  
+    e.preventDefault()
     var data = new FormData(form.current);
     let output = ''
     for (const entry of data) {
