@@ -3,6 +3,8 @@ import React, { useState,useEffect} from 'react'
 import styled, { keyframes }  from 'styled-components'
 import Card from './card'
 import Options from './options'
+import Count from './count'
+
 const Main = ({ totalCards,endGame }) => {
    
     const Wrapper = styled.div`
@@ -33,9 +35,9 @@ const Main = ({ totalCards,endGame }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [myStats, setMyStats] = useState([])
     const [cpuStats,setCpuStats] = useState([])
-    const [revealCard,setRevealCard] = useState(true)
+    const [revealCard,setRevealCard] = useState(false)
     const [status,setStatus] = useState(false)
-    const [output,setOutput] = useState(undefined)
+    const [output,setOutput] = useState(['#fff','#fff'])
     const [currentStat,setCurrentStat] = useState(undefined)
     const myActiveCard = myStats.slice(0,1)
     const cpuActiveCard = cpuStats.slice(0,1)
@@ -46,27 +48,31 @@ const Main = ({ totalCards,endGame }) => {
       setRevealCard(true)
       setStatus(true)
       let index = buttons.indexOf(e.target.innerText)
-      setCurrentStat([statsOf(myStats),statsOf(cpuStats)])
-      if(statsOf(myStats) > statsOf(cpuStats)){
-        setCpuStats([...cpuStats].slice(1))
-        setMyStats([...myStats,cpuStats[0],myStats[0]].slice(1))
-        setOutput(['>','green','red'])
-      }else{
-        setMyStats([...myStats].slice(1))
-        setCpuStats([...cpuStats,myStats[0],cpuStats[0]].slice(1))
-        setOutput(['<','red','green'])
-      }
+      setCurrentStat([statsOf(myStats),statsOf(cpuStats),e.target.innerText])
       function statsOf(el){
         return el[0].stats[index].base_stat
       }
     }
     const next = () => {
       setStatus(false)
-      if(cpuStats.length === 0 ){
-        endGame('win')
-      } else if (myStats.length === 0){
-        endGame('lose')
+      setRevealCard(false)
+      if(currentStat[0] > currentStat[1]){
+        if(cpuStats.length === 1 ){
+          endGame('win')
+        } else{
+        setCpuStats([...cpuStats].slice(1))
+        setMyStats([...myStats,cpuStats[0],myStats[0]].slice(1))
+        setOutput(['green','red'])
+        }
+      }else{
+        if (myStats.length === 1){
+          endGame('lose')
+        }else{
+        setMyStats([...myStats].slice(1))
+        setCpuStats([...cpuStats,myStats[0],cpuStats[0]].slice(1))
+        setOutput(['red','green'])
       }
+    }
     }
      useEffect(() => {
         const setPokemons = async () => {
@@ -88,6 +94,7 @@ const Main = ({ totalCards,endGame }) => {
       <Card PokeStats={cpuActiveCard} GridColumn='150px 150px' Type={revealCard}/>
     </Wrapper>
       <Card PokeStats={myStats} Absolute='true' GridColumn='110px 110px'/>
+      <Count Total={[myStats.length,cpuStats.length,output]}/>
   </>
         )
 }

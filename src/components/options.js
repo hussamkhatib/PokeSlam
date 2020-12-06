@@ -8,7 +8,8 @@ const Options = ({ handleClick,Buttons,Status,Output,Next,User,Cpu,CurrentStat }
     grid-auto-rows: 50px;
     gap:0.1em;`
     const FlexWrapper = styled.div`
-    `
+    display:flex;
+    flex-direction:column;`
     const Button = styled.button`
     padding: .6em 1em;
     background:#924d8b;
@@ -21,7 +22,7 @@ const Options = ({ handleClick,Buttons,Status,Output,Next,User,Cpu,CurrentStat }
     const Result = styled.p`
     `
     const Span = styled.span`
-    color: ${props => props.primary ? Output[1] : Output[2] };`
+    color:#924d8b;`
 
     return (
         <>
@@ -38,9 +39,8 @@ const Options = ({ handleClick,Buttons,Status,Output,Next,User,Cpu,CurrentStat }
 
         {Status && 
         <FlexWrapper>
-            <Result>{CurrentStat[0]} {Output[0]} {CurrentStat[1]}</Result>
-            <Result>Your Cards <Span primary>{User.length}</Span></Result>
-            <Result>Cpu Cards <Span>{Cpu.length}</Span></Result>
+            <Result>Your {CurrentStat[2]} <Span>{CurrentStat[0]}</Span></Result> 
+            <Result>Cpu {CurrentStat[2]} <Span>{CurrentStat[1]}</Span></Result>
             <Button onClick={Next}>okay</Button>
          </FlexWrapper>
          }
