@@ -11,7 +11,9 @@ const Rule = ({ startGame,prop }) => {
     const ImageContainer=styled.div`
     background:#fff;`
 
-    const Image = styled.img`height:100%;
+    const Image = styled.img`
+    height:100%;
+    max-width:100%;
     display:block;
     margin:0 auto;`
 
@@ -34,6 +36,7 @@ const Rule = ({ startGame,prop }) => {
                 <P>Select no of cards</P>
                 <input type="radio" value="3" name="totalCards" checked/> 3
                 <input type="radio" value="5" name="totalCards" /> 5
+                <input type="radio" value="10" name="totalCards" /> 10
                 <Button>Generate Cards</Button>
                 </InputContainer>
             </Form>

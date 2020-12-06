@@ -22,9 +22,9 @@ margin-bottom:0.2em;
 const CardContainer =styled.div`
 display:grid;
 grid-template: 100px 1.5fr repeat(3,1fr) / ${GridColumn};
+height: 35vh;
 border: 2px solid #e6e6e6;
 background: #924d8b;
-height: 35vh;
 transition: all .2s ease-in-out;
 width:max-content;
 justify-items: center;
@@ -36,7 +36,9 @@ display: flex;
 background: #fff;
 height: 35vh;
 width:100vw;
-bottom:0;` 
+bottom:0;
+overflow-x:auto;
+overflow-y : hidden;` 
 : styled.div``
 
 if(Type === false){

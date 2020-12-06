@@ -2,8 +2,8 @@ import React,{ useState,useRef } from 'react'
 
 import Header from './components/header'
 import Main from './components/main'
-import Footer from './components/footer'
 import Rule from './components/rule'
+import Finish from './components/finish'
 
 function App() {
 
@@ -26,13 +26,16 @@ function App() {
     setWinOrLose(param)
   }
 
+  const reset = () => {
+   setStartGame(false) 
+  }
+
   return (
     <div className="App">
        <Header /> 
       {!startGame && <Rule startGame={start} prop={form} />}
       {(startGame && startGame !== 'end') && <Main totalCards={totalCards} endGame={endGame}/>  }
-      {startGame === 'end' && <p>you {winOrLose}</p>}
-       <Footer />
+      {startGame === 'end' && <Finish WinOrLose={winOrLose} Reset={reset}/>}
     </div>
   );
 }
