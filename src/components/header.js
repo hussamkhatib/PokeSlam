@@ -7,11 +7,7 @@ const Header = () => {
     color: #924d8b;
   `;
 
-  return (
-    <>
-      <Title>PokeWars</Title>
-    </>
-  );
+  return <Title>PokeWars</Title>;
 };
 
 export default Header;

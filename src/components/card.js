@@ -20,15 +20,15 @@ const Card = ({ PokeStats, Absolute, GridColumn, Type }) => {
     margin-bottom: 0.2em;
   `;
   const CardContainer = styled.div`
-display:grid;
-grid-template: 100px 1.5fr repeat(3,1fr) / ${GridColumn};
-height: 35vh;
-border: 2px solid #e6e6e6;
-background: #924d8b;
-transition: all .2s ease-in-out;
-width:max-content;
-justify-items: center;
-&:hover { transform: scale(1.1);`;
+    display:grid;
+    grid-template: 100px 1.5fr repeat(3,1fr) / ${GridColumn};
+    height: 35vh;
+    border: 2px solid #e6e6e6;
+    background: #924d8b;
+    transition: all .2s ease-in-out;
+    width:max-content;
+    justify-items: center;
+    &:hover { transform: scale(1.1);`;
   const Wrapper = Absolute
     ? styled.div`
         position: absolute;
@@ -56,16 +56,16 @@ justify-items: center;
   return (
     <Wrapper>
       {PokeStats &&
-        PokeStats.map((item) => (
-          <CardContainer key={item.id}>
-            <Image src={item.sprites.front_default} alt="pokemon" />
-            <Name>{item.name}</Name>
-            <Stats>hp {item.stats[0].base_stat}</Stats>
-            <Stats>attack {item.stats[1].base_stat}</Stats>
-            <Stats>defence {item.stats[2].base_stat}</Stats>
-            <Stats>sp-attack {item.stats[3].base_stat}</Stats>
-            <Stats>sp-defence {item.stats[4].base_stat}</Stats>
-            <Stats>speed {item.stats[5].base_stat}</Stats>
+        PokeStats.map((stat) => (
+          <CardContainer key={stat.id}>
+            <Image src={stat.sprites.front_default} alt="pokemon" />
+            <Name>{stat.name}</Name>
+            <Stats>hp {stat.stats[0].base_stat}</Stats>
+            <Stats>attack {stat.stats[1].base_stat}</Stats>
+            <Stats>defence {stat.stats[2].base_stat}</Stats>
+            <Stats>sp-attack {stat.stats[3].base_stat}</Stats>
+            <Stats>sp-defence {stat.stats[4].base_stat}</Stats>
+            <Stats>speed {stat.stats[5].base_stat}</Stats>
           </CardContainer>
         ))}
     </Wrapper>

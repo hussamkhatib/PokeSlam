@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Hero from '../images/hero.png';
 
-const Rule = ({ startGame, prop }) => {
+function Rule({ startGame, handleChange, totalCards }: any) {
   const Form = styled.form`
     height: 100vh;
     display: grid;
@@ -32,20 +32,42 @@ const Rule = ({ startGame, prop }) => {
     display: block;
     padding: 0.4em;
   `;
+  console.log(totalCards);
   return (
-    <Form ref={prop} onSubmit={startGame}>
+    <Form onSubmit={startGame}>
       <ImageContainer>
         <Image height="400" width="600" src={Hero} alt="hero" />
       </ImageContainer>
       <InputContainer>
         <P>Select no of cards</P>
-        <input type="radio" value="3" name="totalCards" checked /> 3
-        <input type="radio" value="5" name="totalCards" /> 5
-        <input type="radio" value="10" name="totalCards" /> 10
+        <label>3</label>
+        <input
+          type="radio"
+          value="3"
+          onChange={handleChange}
+          name="totalCards"
+          checked={totalCards === '3'}
+        />
+        <label>5</label>
+        <input
+          type="radio"
+          value="5"
+          onChange={handleChange}
+          name="totalCards"
+          checked={totalCards === '5'}
+        />
+        <label>10</label>
+        <input
+          type="radio"
+          value="10"
+          onChange={handleChange}
+          name="totalCards"
+          checked={totalCards === '10'}
+        />
         <Button>Generate Cards</Button>
       </InputContainer>
     </Form>
   );
-};
+}
 
 export default Rule;
