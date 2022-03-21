@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Image = styled.img`
+  grid-area: 1/1/ 2/-1;
+`;
+const Stats = styled.p`
+  margin: 0;
+  font-size: 1em;
+  padding: 0 0.2em;
+  justify-self: flex-start;
+`;
+const Name = styled.h2`
+  grid-column: 1/-1;
+  margin: 0;
+  padding: 0.2em;
+  font-size: 1.6em;
+  justify-items: center;
+  margin-bottom: 0.2em;
+`;
 const Card = ({ PokeStats, Absolute, GridColumn, Type }) => {
-  const Image = styled.img`
-    grid-area: 1/1/ 2/-1;
-  `;
-  const Stats = styled.p`
-    margin: 0;
-    font-size: 1em;
-    padding: 0 0.2em;
-    justify-self: flex-start;
-  `;
-  const Name = styled.h2`
-    grid-column: 1/-1;
-    margin: 0;
-    padding: 0.2em;
-    font-size: 1.6em;
-    justify-items: center;
-    margin-bottom: 0.2em;
-  `;
   const CardContainer = styled.div`
     display:grid;
     grid-template: 100px 1.5fr repeat(3,1fr) / ${GridColumn};

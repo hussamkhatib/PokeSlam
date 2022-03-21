@@ -2,36 +2,37 @@ import React from 'react';
 import styled from 'styled-components';
 import Hero from '../images/hero.png';
 
+const Form = styled.form`
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+`;
+const ImageContainer = styled.div`
+  background: #fff;
+`;
+
+const Image = styled.img`
+  height: 100%;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+`;
+
+const InputContainer = styled.div`
+  margin: 0 auto;
+`;
+
+const P = styled.p`
+  margin: 0;
+  padding: 0.6em 0;
+  font-size: 1.2em;
+`;
+const Button = styled.button`
+  display: block;
+  padding: 0.4em;
+`;
+
 function Rule({ startGame, handleChange, totalCards }: any) {
-  const Form = styled.form`
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 4fr 1fr;
-  `;
-  const ImageContainer = styled.div`
-    background: #fff;
-  `;
-
-  const Image = styled.img`
-    height: 100%;
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
-  `;
-
-  const InputContainer = styled.div`
-    margin: 0 auto;
-  `;
-
-  const P = styled.p`
-    margin: 0;
-    padding: 0.6em 0;
-    font-size: 1.2em;
-  `;
-  const Button = styled.button`
-    display: block;
-    padding: 0.4em;
-  `;
   console.log(totalCards);
   return (
     <Form onSubmit={startGame}>

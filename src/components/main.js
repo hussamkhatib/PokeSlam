@@ -1,11 +1,11 @@
-import { getPokemons } from '../helper';
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Card from './card';
-import Options from './options';
-import Count from './count';
+import { getPokemons } from '../helper';
+import Card from './Card';
+import Options from './Options';
+import Count from './Count';
 
-const Main = ({ totalCards, endGame }) => {
+function Main({ totalCards, endGame }) {
   const Wrapper = styled.div`
     display: flex;
     justify-content: space-evenly;
@@ -47,7 +47,7 @@ const Main = ({ totalCards, endGame }) => {
   const handleClick = (e) => {
     setRevealCard(true);
     setStatus(true);
-    let index = buttons.indexOf(e.target.innerText);
+    const index = buttons.indexOf(e.target.innerText);
     setCurrentStat([statsOf(myStats), statsOf(cpuStats), e.target.innerText]);
     function statsOf(el) {
       return el[0].stats[index].base_stat;
@@ -64,14 +64,12 @@ const Main = ({ totalCards, endGame }) => {
         setMyStats([...myStats, cpuStats[0], myStats[0]].slice(1));
         setOutput(['green', 'red']);
       }
+    } else if (myStats.length === 1) {
+      endGame('lose');
     } else {
-      if (myStats.length === 1) {
-        endGame('lose');
-      } else {
-        setMyStats([...myStats].slice(1));
-        setCpuStats([...cpuStats, myStats[0], cpuStats[0]].slice(1));
-        setOutput(['red', 'green']);
-      }
+      setMyStats([...myStats].slice(1));
+      setCpuStats([...cpuStats, myStats[0], cpuStats[0]].slice(1));
+      setOutput(['red', 'green']);
     }
   };
   useEffect(() => {
@@ -102,5 +100,5 @@ const Main = ({ totalCards, endGame }) => {
       <Count Total={[myStats.length, cpuStats.length, output]} />
     </>
   );
-};
+}
 export default Main;
