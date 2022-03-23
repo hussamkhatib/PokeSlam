@@ -69,8 +69,8 @@ const Main: FC<Props> = ({ totalCards, endGame }) => {
                 <Card
                     PokeStats={myActiveCard}
                     GridColumn="150px 150px"
-                    Absolute={undefined}
-                    Type={undefined}
+                    Absolute={false}
+                    Type={false}
                 />
                 <Options
                     handleClick={handleClick}
@@ -83,10 +83,10 @@ const Main: FC<Props> = ({ totalCards, endGame }) => {
                     PokeStats={cpuActiveCard}
                     GridColumn="150px 150px"
                     Type={revealCard}
-                    Absolute={undefined}
+                    Absolute={false}
                 />
             </Wrapper>
-            <Card PokeStats={myStats} Absolute="true" GridColumn="110px 110px" Type={undefined} />
+            <Card PokeStats={myStats} Absolute GridColumn="110px 110px" Type={false} />
             <Count Total={[myStats.length, cpuStats.length, output]} />
         </>
     );
