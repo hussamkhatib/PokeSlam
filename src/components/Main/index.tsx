@@ -4,11 +4,8 @@ import Card from '../Card';
 import Options from '../Options';
 import Count from '../Count';
 import { Wrapper, Rotate } from './elements';
+import { result } from '../../types';
 
-enum result {
-    win,
-    lose,
-}
 interface Props {
     totalCards: number;
     endGame: (param: result) => void;

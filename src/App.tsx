@@ -4,17 +4,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Rule from './components/Rule';
 import Finish from './components/Finish';
-
-enum game {
-    home,
-    start,
-    end,
-}
-
-enum result {
-    win,
-    lose,
-}
+import { game, result } from './types';
 
 const App: FC = () => {
     const [startGame, setStartGame] = useState<game>(game.home);
