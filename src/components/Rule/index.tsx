@@ -1,5 +1,5 @@
 import React from 'react';
-import Hero from '../images/hero.png';
+import Hero from '../../images/hero.png';
 import { Form, Image, ImageContainer, InputContainer, P, Button } from './elements';
 
 function Rule({ startGame, handleChange, totalCards }: any) {
