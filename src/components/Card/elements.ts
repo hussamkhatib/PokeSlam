@@ -22,7 +22,7 @@ export const Name = styled.h2`
 
 interface CardContainerProps {
     GridColumn: any;
-  }
+}
 
 export const CardContainer = styled.div<CardContainerProps>`
     display:grid;
@@ -40,8 +40,9 @@ interface WrapperProps {
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-        ${(props) => (props.Absolute
-        ? `position: absolute;
+    ${(props) =>
+        props.Absolute
+            ? `position: absolute;
             z-index: 2;
             display: flex;
             background: #fff;
@@ -49,5 +50,6 @@ export const Wrapper = styled.div<WrapperProps>`
             width: 100vw;
             bottom: 0;
             overflow-x: auto;
-            overflow-y: hidden;` : '')}
+            overflow-y: hidden;`
+            : ''}
 `;

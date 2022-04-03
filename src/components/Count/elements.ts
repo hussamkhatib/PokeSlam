@@ -13,12 +13,11 @@ export const P = styled.p`
     padding: 0.4em;
 `;
 
-
 interface SpanProps {
     primary?: any;
     Total: any;
-  }
+}
 
 export const Span = styled.span<SpanProps>`
-color: ${(props) => (props.primary ? props.Total[2][0] : props.Total[2][1])};
+    color: ${(props) => (props.primary ? props.Total[2][0] : props.Total[2][1])};
 `;
